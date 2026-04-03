@@ -1,2 +1,4 @@
+{"name":"Ben","email":"ben@yoga.local","role":"instructor","_id":"0iFBHKyWmui55NCZ"}
+{"name":"Ava","email":"ava@yoga.local","role":"instructor","_id":"RRInmIvEvAdWGBdb"}
+{"name":"Fiona","email":"fiona@student.local","role":"student","_id":"a9Nz5fPwTdeoRuwK"}
 {"$$indexCreated":{"fieldName":"email","unique":true,"sparse":false}}
-{"name":"Fiona","email":"fiona@student.local","role":"student","_id":"cqhGQKxArmgTO1Se"}

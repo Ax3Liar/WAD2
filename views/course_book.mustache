@@ -5,7 +5,8 @@
 <article>
   <h1>Book: {{course.title}}</h1>
   <p class="muted">
-    Level: {{course.level}} • Type: {{course.type}} {{#course.allowDropIn}}• Drop-in available{{/course.allowDropIn}}
+    Level: {{course.level}} • Type: {{course.type}} 
+    {{#course.allowDropIn}} • Drop-in available{{/course.allowDropIn}}
   </p>
   <p>{{course.description}}</p>
   <p class="muted">Dates: {{course.startDate}} – {{course.endDate}}</p>
@@ -19,8 +20,10 @@
     </ul>
   </div>
   {{/errors}}
-
-  <form method="post" action="/   <!-- If you add CSRF later: <input type="hidden" name="_csrf" value="{{csrfToken}}"> -->
+  
+  <!-- If you add CSRF later: <input type="hidden" name="_csrf" value="{{csrfToken}}"> -->
+  <form method="post" action="/courses/{{course.id}}/book">  
+  
     <input type="hidden" name="userId" value="{{user._id}}">
 
     <fieldset>
@@ -49,7 +52,7 @@
 
     <fieldset>
       <legend>Booking summary</legend>
-      <p>This booking reserves a seat across <strong>{{sessionsCount}}</strong> sessions:</p>
+      <p>This booking reserves a seat across<strong>{{sessionsCount}}</strong> sessions:</p>
       <ul class="muted">
         {{#sessions}}
         <li>{{start}} ({{remaining}} places left)</li>
@@ -59,7 +62,7 @@
 
     <div class="actions">
       <button class="btn primary" type="submit">Confirm Course Booking</button>
-      /courses/{{course.id}}Cancel</a>
+      <a href="/courses/{{course.id}}">Cancel</a>
     </div>
   </form>
 </article>

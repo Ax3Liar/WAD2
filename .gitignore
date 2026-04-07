@@ -1,4 +1,4 @@
 /node_modules
 
-# Database files
-db/*.db
+#ignore db
+/db

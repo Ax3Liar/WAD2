@@ -7,7 +7,12 @@ export const attachDemoUser = async (req, res, next) => {
     const email = "fiona@student.local";
     let user = await UserModel.findByEmail(email);
     if (!user) {
-      user = await UserModel.create({ name: "Fiona", email, role: "student" });
+      user = await UserModel.create({ 
+        name: "Fiona",
+        email: "fiona@student.local",
+        password: "password123",
+        role: "student"
+      });
     }
     req.user = user;
     res.locals.user = user; // exposed to Mustache

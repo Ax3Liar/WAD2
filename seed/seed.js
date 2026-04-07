@@ -35,6 +35,7 @@ async function ensureDemoStudent() {
     student = await UserModel.create({
       name: "Fiona",
       email: "fiona@student.local",
+      password: "password123",
       role: "student",
     });
   }
@@ -45,6 +46,7 @@ async function createWeekendWorkshop() {
   const instructor = await UserModel.create({
     name: "Ava",
     email: "ava@yoga.local",
+    password: "password123",
     role: "instructor",
   });
   const course = await CourseModel.create({
@@ -83,6 +85,7 @@ async function createWeeklyBlock() {
   const instructor = await UserModel.create({
     name: "Ben",
     email: "ben@yoga.local",
+    password: "password123",
     role: "instructor",
   });
   const course = await CourseModel.create({

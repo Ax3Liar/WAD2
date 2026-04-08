@@ -1,27 +1,8 @@
 // controllers/coursesListController.js
 import { CourseModel } from "../models/courseModel.js";
 import { SessionModel } from "../models/sessionModel.js";
+import { fmtDate, fmtDateOnly } from "../utils/formatter.js";
 
-const fmtDateOnly = (iso) =>
-  iso
-    ? new Date(iso).toLocaleDateString("en-GB", {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      })
-    : "";
-
-const fmtDateTime = (iso) =>
-  iso
-    ? new Date(iso).toLocaleString("en-GB", {
-        weekday: "short",
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-      })
-    : "TBA";
 
 export const coursesListPage = async (req, res, next) => {
   try {
@@ -88,7 +69,7 @@ export const coursesListPage = async (req, res, next) => {
           allowDropIn: c.allowDropIn,
           startDate: fmtDateOnly(c.startDate),
           endDate: fmtDateOnly(c.endDate),
-          nextSession: first ? fmtDateTime(first.startDateTime) : "TBA",
+          nextSession: first ? fmtDate(first.startDateTime) : "TBA",
           sessionsCount: sessions.length,
           description: c.description,
         };

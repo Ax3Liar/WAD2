@@ -6,22 +6,7 @@ import {
   bookSessionForUser,
 } from "../services/bookingService.js";
 import { BookingModel } from "../models/bookingModel.js";
-
-const fmtDate = (iso) =>
-  new Date(iso).toLocaleString("en-GB", {
-    weekday: "short",
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-const fmtDateOnly = (iso) =>
-  new Date(iso).toLocaleDateString("en-GB", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
+import { fmtDate, fmtDateOnly } from "../utils/formatter.js";
 
 export const homePage = async (req, res, next) => {
   try {

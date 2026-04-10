@@ -1,0 +1,43 @@
+{{> header}}
+<main class="container">
+    <h2>Manage Sessions for {{courseTitle}}</h2>
+    <a href="/instructor/dashboard">← Back to Dashboard</a>
+
+    <section>
+        <h3>Add New Session</h3>
+        <form action="/instructor/courses/{{courseId}}/sessions/add" method="POST">
+            <input type="date" name="date" required>
+            <input type="time" name="time" required>
+            <input type="text" name="location" placeholder="Room Name/Location" required>
+            <button type="submit">Add Session</button>
+        </form>
+    </section>
+
+    <hr>
+
+    <section>
+        <h3>Existing Sessions</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#sessions}}
+                <tr>
+                    <td>{{date}}</td>
+                    <td>{{time}}</td>
+                    <td>{{location}}</td>
+                </tr>
+                {{/sessions}}
+                {{^sessions}}
+                <tr><td colspan="3">No sessions scheduled yet.</td></tr>
+                {{/sessions}}
+            </tbody>
+        </table>
+    </section>
+</main>
+{{> footer}}

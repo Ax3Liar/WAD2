@@ -36,7 +36,7 @@ async function ensureDemoStudent() {
       name: "Fiona",
       email: "fiona@student.local",
       password: "password123",
-      role: "student",
+      role: "instructor",
     });
   }
   return student;

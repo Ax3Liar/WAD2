@@ -1,0 +1,30 @@
+{{> header}}
+<main class="container">
+    <h2>Class List for: {{courseTitle}}</h2>
+    <a href="/instructor/dashboard">← Back to Dashboard</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Email</th>
+                <th>Booking Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#participants}}
+            <tr>
+                <td>{{studentName}}</td>
+                <td>{{studentEmail}}</td>
+                <td>{{date}}</td>
+            </tr>
+            {{/participants}}
+            {{^hasParticipants}}
+            <tr>
+                <td colspan="3">No students have enrolled in this course yet.</td>
+            </tr>
+            {{/hasParticipants}}
+        </tbody>
+    </table>
+</main>
+{{> footer}}

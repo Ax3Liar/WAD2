@@ -1,0 +1,39 @@
+{{> head}}
+{{> header}}
+
+<main class="container">
+    <h2>Instructor Dashboard</h2>
+    <div class="actions">
+        <a href="/instructor/courses/add" class="btn btn-primary">Add New Course</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Course Title</th>
+                <th>Type</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#courses}}
+            <tr>
+                <td><strong>{{title}}</strong></td>
+                <td>{{type}}</td>
+                <td>£{{price}}</td>
+                <td>
+                    <a href="/instructor/courses/{{id}}/edit">Edit</a> |
+                    <a href="/instructor/courses/{{id}}/sessions">Manage Sessions</a> |
+                    <a href="/instructor/courses/{{id}}/participants">Class List</a> |
+                    <form action="/instructor/courses/{{id}}/delete" method="POST" style="display:inline;">
+                        <button type="submit" onclick="return confirm('Delete this course?')">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {{/courses}}
+        </tbody>
+    </table>
+</main>
+
+{{> footer}}

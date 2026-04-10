@@ -7,20 +7,25 @@
       <a href="/courses">Courses</a>
       
       {{^user}}
+        <a href="/login">Login</a>
         <a href="/register">Register</a>
       {{/user}}
 
       {{#user}}
-        {{#isOrganiser}}
-          <a href="/courses/add">Admin: Add Course</a>
-        {{/isOrganiser}}
+        {{#isInstructor}}
+          <a href="/instructor/dashboard" class="nav-admin">Instructor Dashboard</a>
+        {{/isInstructor}}
       {{/user}}
     </nav>
 
     {{#user}}
     <div class="user-info">
-      Signed in as <strong>{{ name }}</strong> 
-      <small>({{ role }})</small>
+      <span>Signed in as <strong>{{name}}</strong></span>
+      <small>({{role}})</small>
+
+      <form action="/logout" method="POST" style="display:inline;">
+        <button type="submit" class="btn-logout">Logout</button>
+      </form>
     </div>
     {{/user}}
   </div>

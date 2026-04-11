@@ -120,7 +120,7 @@ app.use("/api/sessions", sessionRoutes);
 app.use("/api/bookings", bookingRoutes);
 
 // SSR view routes
-app.use("/", viewRoutes);
+// app.use("/", viewRoutes);
 
 // Errors
 export const not_found = (req, res) =>
@@ -135,8 +135,11 @@ app.use(server_error);
 // Only start the server outside tests
 if (process.env.NODE_ENV !== "test") {
   await initDb();
+  
+  // MODIFIED FOR HEROKU: Use the environment port if available, otherwise 3000
   const PORT = process.env.PORT || 3000;
+  
   app.listen(PORT, () =>
-    console.log(`Yoga booking running on http://localhost:${PORT}`)
+    console.log(`Yoga booking running on port ${PORT}`)
   );
 }

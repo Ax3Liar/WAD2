@@ -6,8 +6,12 @@ export const SessionModel = {
   async create(session) {
     return sessionsDb.insert(session);
   },
-  async listByCourse(courseId) {
+  async findByCourseId(courseId) {
     return sessionsDb.find({ courseId }).sort({ startDateTime: 1 });
+  },
+  // Alias for viewsController
+  async listByCourse(courseId) {
+    return this.findByCourseId(courseId);
   },
   async findById(id) {
     return sessionsDb.findOne({ _id: id });
@@ -19,5 +23,8 @@ export const SessionModel = {
     if (next < 0) throw new Error('Booked count cannot be negative');
     await sessionsDb.update({ _id: id }, { $set: { bookedCount: next } });
     return this.findById(id);
+  },
+  async removeByCourse(courseId) {
+    return sessionsDb.remove({ courseId: courseId }, { multi: true });
   }
 };

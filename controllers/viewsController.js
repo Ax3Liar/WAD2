@@ -23,13 +23,13 @@ export const homePage = async (req, res, next) => {
           allowDropIn: c.allowDropIn,
           startDate: c.startDate ? fmtDateOnly(c.startDate) : "",
           endDate: c.endDate ? fmtDateOnly(c.endDate) : "",
-          nextSession: nextSession ? fmtDate(nextSession.startDateTime) : "TBA",
+          nextSession: nextSession ? `${nextSession.date} at ${nextSession.time}` : "TBA",
           sessionsCount: sessions.length,
           description: c.description,
         };
       })
     );
-    res.render("home", { title: "Yoga Courses", courses: cards });
+res.render("home", { title: "Yoga Courses", courses: cards });
   } catch (err) {
     next(err);
   }

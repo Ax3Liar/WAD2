@@ -6,7 +6,6 @@
 // import path from "path";
 // import { fileURLToPath } from "url";
 
-// // import authRoutes from "./routes/auth.js"; // (optional - if you already had this)
 // import courseRoutes from "./routes/courses.js"; // JSON API
 // import sessionRoutes from "./routes/sessions.js"; // JSON API
 // import bookingRoutes from "./routes/bookings.js"; // JSON API
@@ -73,13 +72,14 @@ import mustacheExpress from "mustache-express";
 import path from "path";
 import { fileURLToPath } from "url";
 
-// import authRoutes from './routes/auth.js';
+import authRoutes from './routes/auth.js';
 import courseRoutes from "./routes/courses.js";
 import sessionRoutes from "./routes/sessions.js";
 import bookingRoutes from "./routes/bookings.js";
 import viewRoutes from "./routes/views.js";
 import { attachDemoUser } from "./middlewares/demoUser.js";
 import { initDb } from "./models/_db.js";
+import { loadUser } from "./middlewares/userState.js";
 
 dotenv.config();
 
@@ -100,12 +100,15 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
+app.use(loadUser);
+app.use("/", authRoutes);
+app.use("/", viewRoutes);
 
 // Static
 app.use("/static", express.static(path.join(__dirname, "public")));
 
 // Demo user
-app.use(attachDemoUser);
+// app.use(attachDemoUser);
 
 // Health
 app.get("/health", (req, res) => res.json({ ok: true }));

@@ -13,12 +13,15 @@ import {
   deleteCourse, 
   showAddForm, 
   createCourse, 
-  showEditForm,     // Added
-  updateCourse      // Added
+  showEditForm,     
+  updateCourse,      
+  showClassList,        
+  showManageSessions,   
+  addSession
 } from "../controllers/adminController.js";
 import { ensureAuthenticated, isInstructor } from "../middlewares/auth.js";
 import { showLoginPage, login, logout } from "../controllers/authController.js";
-import { showManageSessions, addSession } from "../controllers/adminController.js";
+
 
 const router = Router();
 

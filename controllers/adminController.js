@@ -122,8 +122,6 @@ export const showClassList = async (req, res, next) => {
     }
 };
 
-import { SessionModel } from "../models/sessionModel.js";
-
 export const showManageSessions = async (req, res, next) => {
     try {
         const { id } = req.params; // Course ID

@@ -136,10 +136,9 @@ app.use(server_error);
 if (process.env.NODE_ENV !== "test") {
   await initDb();
   
-  // MODIFIED FOR HEROKU: Use the environment port if available, otherwise 3000
   const PORT = process.env.PORT || 3000;
   
   app.listen(PORT, () =>
-    console.log(`Yoga booking running on port ${PORT}`)
+    console.log(`Yoga booking running on http://localhost:${PORT}`)
   );
 }
